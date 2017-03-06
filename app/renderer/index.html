@@ -4,39 +4,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Login - Zulip</title>
-    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body class="container-layout">
     <div class="section-main">
-      <header>
-        <div class="container">
-          <img src="../resources/zulip.png" id="logo"/>
-        </div>
-      </header>
-      <hr>
-      <section class="content">
-        <section class="server">
-          <div class="container">
-            <h1>Enter your Zulip Server URL</h1>
-            <form id="frm-signInForm" class="form-large" onsubmit="addDomain(); return false">
-              <fieldset>
-                <div class="control-group control-required">
-                  <div class="control-field">
-                    <input type="text" id="url"  autofocus="autofocus" spellcheck="false" placeholder="Server URL">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="control-submit">
-                    <button type="submit" id="main" class="btn-primary btn-large" value="Submit" onclick="addDomain();">Connect</button>
-                  </div>
-                </div>
-                <p id="server-status"><p>
-              </fieldset>
-            </form>
-          </div>
-        </section>
-      </section>
+    	<div class="etabs-tabgroup">
+        <div class="etabs-tabs"></div>
+        <div class="etabs-buttons"></div>
+      </div>
+      <div class="etabs-views"></div>
     </div>
+    <script src="js/index.js"></script>
   </body>
+
 </html>

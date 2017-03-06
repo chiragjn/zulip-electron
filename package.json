@@ -4,7 +4,7 @@
   "version": "0.5.8",
   "description": "Zulip Desktop App",
   "license": "Apache-2.0",
-  "email":"<svnitakash@gmail.com>",
+  "email": "<svnitakash@gmail.com>",
   "copyright": "©2016 Kandra Labs, Inc.",
   "author": {
     "name": "Akash Nimare",
@@ -38,14 +38,17 @@
     "mac": {
       "category": "public.app-category.productivity"
     },
-    "linux" : {
+    "linux": {
       "synopsis": "Zulip Desktop App",
       "category": "",
       "packageCategory": "GNOME;GTK;Network;InstantMessaging",
       "description": "Zulip Desktop Client for Linux",
-      "target" : ["deb", "AppImage"],
-      "version" : "0.5.8",
-      "title" : "Zulip",
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "version": "0.5.8",
+      "title": "Zulip",
       "license": "Apache-2.0",
       "maintainer": "Akash Nimare <svnitakash@gmail.com>"
     },
@@ -78,18 +81,18 @@
     }
   },
   "keywords": [
-  	"Zulip",
-  	"Group Chat app",
-  	"electron-app",
-  	"electron",
-  	"Desktop app",
-  	"InstantMessaging"
+    "Zulip",
+    "Group Chat app",
+    "electron-app",
+    "electron",
+    "Desktop app",
+    "InstantMessaging"
   ],
   "devDependencies": {
     "assert": "^1.4.1",
-    "devtron": "^1.1.0",
-    "electron-builder": "14.1.1",
+    "devtron": "^1.4.0",
     "electron": "1.4.15",
+    "electron-builder": "14.1.1",
     "electron-connect": "^0.4.6",
     "gulp": "^3.9.1",
     "gulp-mocha": "^3.0.1",
@@ -109,7 +112,7 @@
           "no-warning-comments": 0,
           "no-else-return": 0,
           "import/no-unresolved": 0,
-          "import/no-extraneous-dependencies":0
+          "import/no-extraneous-dependencies": 0
         }
       }
     ],
@@ -122,5 +125,8 @@
       "browser",
       "mocha"
     ]
+  },
+  "dependencies": {
+    "electron-tabs": "^0.5.1"
   }
 }

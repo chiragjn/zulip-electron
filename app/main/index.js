@@ -46,13 +46,12 @@ let mainWindow;
 let targetLink;
 
 // Load this url in main window
+// This is now the main page of the app which will handle tab switching and other stuff
 const staticURL = 'file://' + path.join(__dirname, '../renderer', 'index.html');
 
 const targetURL = function () {
-	if (data.domain === undefined) {
-		return staticURL;
-	}
-	return data.domain;
+	// always return the tab handling page
+	return staticURL;
 };
 
 const isAlreadyRunning = app.makeSingleInstance(() => {
@@ -118,7 +117,7 @@ function createMainWindow() {
 			preload: path.join(__dirname, 'preload.js'),
 			plugins: true,
 			allowDisplayingInsecureContent: true,
-			nodeIntegration: false
+			nodeIntegration: true
 		}
 	});
 
@@ -197,8 +196,10 @@ app.on('ready', () => {
 
 	const page = mainWindow.webContents;
 
-	// TODO - use global shortcut instead
-	electronLocalshortcut.register(mainWindow, 'CommandOrControl+R', () => {
+	// note electron-debug's ControlOrCommand+R will override the below shortcut
+	// ControlOrCommand+R is also registered in menu.js for reloading the current active tab
+	// to see the effects of both shortcuts please disable electron debug
+	electronLocalshortcut.register(mainWindow, 'CommandOrControl+Shift+R', () => {
 		mainWindow.reload();
 	});
 
@@ -240,6 +241,10 @@ app.on('ready', () => {
 app.on('will-quit', () => {
 	// unregister all the shortcuts so that they don't interfare with other apps
 	electronLocalshortcut.unregisterAll(mainWindow);
+});
+
+app.on('browser-window-focus', () => {
+	mainWindow.webContents.send('setFocusToActiveTab');
 });
 
 ipc.on('new-domain', (e, domain) => {

@@ -1,15 +1,13 @@
 'use strict';
 const os = require('os');
 const electron = require('electron');
-
 const {dialog} = require('electron');
+const {addDomain, about} = require('./windowmanager');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const appName = app.getName();
-
-const {addDomain, about} = require('./windowmanager');
 
 function sendAction(action) {
 	const win = BrowserWindow.getAllWindows()[0];
@@ -17,8 +15,8 @@ function sendAction(action) {
 	if (process.platform === 'darwin') {
 		win.restore();
 	}
-
-	win.webContents.send(action);
+	console.log('Menu is sending ' + action);
+	win.webContents.send('sendToActiveWebview', action);
 }
 
 function clearCache() {
@@ -32,9 +30,10 @@ function clearCache() {
 const viewSubmenu = [
 	{
 		label: 'Reload',
+		accelerator: 'CommandOrControl+R',
 		click(item, focusedWindow) {
 			if (focusedWindow) {
-				focusedWindow.reload();
+				sendAction('reload');
 			}
 		}
 	},

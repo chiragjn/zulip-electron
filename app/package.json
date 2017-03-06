@@ -36,6 +36,7 @@
     "node-json-db": "0.7.3",
     "request": "2.79.0",
     "electron-spellchecker": "1.0.4",
-    "wurl": "2.1.0"
+    "wurl": "2.1.0",
+    "electron-tabs": "0.5.1"
   }
 }
